@@ -1,5 +1,5 @@
 apiVersion: v2
-name: aspnetcore-service
+name: aspnetcore
 description: A Helm chart for ASP.NET Core
 type: application
 version: 0.1.0
