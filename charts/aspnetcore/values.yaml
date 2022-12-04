@@ -22,7 +22,7 @@ image:
 ## @param service.port ASP.NET Core service HTTP port
 ##
 service:
-  port: 8080
+  port: 80
 
 ## Configure the ingress resource that allows you to access the ASP.NET Core app (https://kubernetes.io/docs/user-guide/ingress/)
 ## @param ingress.className IngressClass that will be be used to implement the Ingress
