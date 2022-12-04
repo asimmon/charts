@@ -1,7 +1,9 @@
-name: Deploy static content to Pages
+name: Deploy pages
 
 on:
   workflow_dispatch:
+  release:
+    types: [published]
   push:
     branches: ["main"]
     paths:
