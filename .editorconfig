@@ -6,7 +6,7 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 charset = utf-8
 
-[*.{yml, yaml, tpl}]
+[*.{yml, yaml, tpl, html}]
 indent_size = 2
 
 [*.ps1]
