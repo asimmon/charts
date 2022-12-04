@@ -3,6 +3,16 @@ entries:
   aspnetcore:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2022-12-04T02:42:00.383670757Z"
+    description: A Helm chart for ASP.NET Core
+    digest: 26d11ad4bac44d0202677f9f00a8a6b82975baf93ff49739a5557093387e932f
+    name: aspnetcore
+    type: application
+    urls:
+    - https://github.com/asimmon/charts/releases/download/aspnetcore-0.1.1/aspnetcore-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2022-12-02T23:32:29.015514284Z"
     description: A Helm chart for ASP.NET Core
     digest: e17e8b463220f76e43a3179b3d352795bc421fd141c4a13e0aa49c2b7c0de2f4
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/asimmon/charts/releases/download/aspnetcore-0.1.0/aspnetcore-0.1.0.tgz
     version: 0.1.0
-generated: "2022-12-02T23:32:29.015519184Z"
+generated: "2022-12-04T02:42:00.383679557Z"
