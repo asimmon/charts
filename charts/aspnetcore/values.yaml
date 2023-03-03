@@ -27,15 +27,18 @@ image:
   pullPolicy: IfNotPresent
 
 ## ASP.NET Core Service parameters.
+## @param service.name Name of the service, automatically generated from the release name if not specified
 ## @param service.port ASP.NET Core service HTTP port
 ## @param service.annotations Additional custom annotations for ASP.NET Core service
 ##
 service:
+  name: ""
   port: 80
   annotations: {}
 
 ## Configure the ingress resource that allows you to access the ASP.NET Core app (https://kubernetes.io/docs/user-guide/ingress/)
 ## @param ingress.create Specifies whether an Ingress resource should be created
+## @param ingress.name Name of the service, automatically generated from the release name if not specified
 ## @param ingress.className IngressClass that will be be used to implement the Ingress
 ## @param ingress.hostname Default host for the ingress resource, a host pointing to this will be created
 ## @param ingress.path Default path for the ingress record
@@ -46,6 +49,7 @@ service:
 ##
 ingress:
   create: true
+  name: ""
   className: nginx
   hostname: aspnetcore.example.local
   path: /
@@ -54,6 +58,12 @@ ingress:
   tls:
     enabled: false
     secretName: ""
+
+## ASP.NET Core deployment parameters
+## @param deployment.name Name of the deployment, automatically generated from the release name if not specified
+##
+deployment:
+  name: ""
 
 ## ASP.NET Core containers' resource requests and limits defined in YAML
 ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
@@ -134,8 +144,10 @@ serviceAccount:
 
 ## Azure AD Pod Identity binding (https://github.com/Azure/aad-pod-identity)
 ## @param aadpodidentitybinding.create Whether or not to create an AAD pod identity binding associated to the deployment
-## @param aadpodidentitybinding.identityName Name of the Azure AD identity
+## @param aadpodidentitybinding.name Name of the AAD pod identity binding, automatically generated from the release name if not specified
+## @param aadpodidentitybinding.identityName Name of the AAD identity
 ##
 aadpodidentitybinding:
   create: false
+  name: ""
   identityName: ""

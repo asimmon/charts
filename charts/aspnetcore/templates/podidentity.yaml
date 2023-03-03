@@ -2,7 +2,7 @@
 apiVersion: "aadpodidentity.k8s.io/v1"
 kind: AzureIdentityBinding
 metadata:
-  name: {{ .Values.aadpodidentitybinding.identityName }}-binding
+  name: {{ default (printf "%s-aadpodidentitybinding" .Release.Name) .Values.aadpodidentitybinding.name }}
   labels:
     {{- include "aspnetcore.standardLabels" . | nindent 4 }}
     {{- with .Values.commonLabels }}

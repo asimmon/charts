@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-ingress
+  name: {{ default (printf "%s-ingress" .Release.Name) .Values.ingress.name }}
   labels:
     {{- include "aspnetcore.standardLabels" . | nindent 4 }}
     {{- if .Values.commonLabels }}

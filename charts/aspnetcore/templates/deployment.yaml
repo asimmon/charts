@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-deployment
+  name: {{ default (printf "%s-deployment" .Release.Name) .Values.deployment.name }}
   labels:
     {{- include "aspnetcore.standardLabels" . | nindent 4 }}
     {{- if .Values.commonLabels }}
