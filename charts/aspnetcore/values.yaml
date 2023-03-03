@@ -25,6 +25,7 @@ service:
   port: 80
 
 ## Configure the ingress resource that allows you to access the ASP.NET Core app (https://kubernetes.io/docs/user-guide/ingress/)
+## @param ingress.create Specifies whether an Ingress resource should be created
 ## @param ingress.className IngressClass that will be be used to implement the Ingress
 ## @param ingress.hostname Default host for the ingress resource, a host pointing to this will be created
 ## @param ingress.path Default path for the ingress record
@@ -34,6 +35,7 @@ service:
 ## @param ingress.tls.secretName The TLS secret name containing the TLS certificate for the `ingress.hostname` host
 ##
 ingress:
+  create: true
   className: nginx
   hostname: aspnetcore.example.local
   path: /
@@ -52,10 +54,6 @@ resources:
   requests:
     cpu: 50m
     memory: 128Mi
-
-## @param serviceAccountName Optional name of the ServiceAccount to use.
-##
-serviceAccountName: ""
 
 ## @param readinessProbe Optional YAML definition of the readinessProbe, e.g:
 # readinessProbe:
@@ -105,6 +103,15 @@ nodeSelector: {}
 ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 ##
 tolerations: []
+
+## Kubernetes service account
+## @param serviceAccount.create Specifies whether a ServiceAccount should be created
+## @param serviceAccount.name The name of the ServiceAccount to use, even if "create" is false
+## @param serviceAccount.annotations Additional custom annotations for the ServiceAccount
+serviceAccount:
+  create: false
+  name: ""
+  annotations: {}
 
 ## Azure AD Pod Identity binding (https://github.com/Azure/aad-pod-identity)
 ## @param aadpodidentitybinding.create Whether or not to create an AAD pod identity binding associated to the deployment

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-service
   labels:
-    {{- include "aspnetcore-service.labels" . | nindent 4 }}
+    {{- include "aspnetcore.labels" . | nindent 4 }}
 spec:
   type: ClusterIP
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "aspnetcore-service.selectorLabels" . | nindent 4 }}
+    {{- include "aspnetcore.selectorLabels" . | nindent 4 }}

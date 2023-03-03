@@ -1,9 +1,10 @@
+{{- if .Values.ingress.create }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Release.Name }}-ingress
   labels:
-    {{- include "aspnetcore-service.labels" . | nindent 4 }}
+    {{- include "aspnetcore.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -27,3 +28,4 @@ spec:
                 name: {{ .Release.Name }}-service
                 port:
                   number: {{ .Values.service.port }}
+{{- end }}
