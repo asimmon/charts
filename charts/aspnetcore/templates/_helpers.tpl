@@ -4,8 +4,8 @@ app.kubernetes.io/name: {{ .Chart.Name }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{/* Common labels */}}
-{{- define "aspnetcore.labels" -}}
+{{/* Standard labels */}}
+{{- define "aspnetcore.standardLabels" -}}
 helm.sh/chart: {{ printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{ include "aspnetcore.selectorLabels" . }}
 app.kubernetes.io/version: {{ .Values.image.tag | quote }}

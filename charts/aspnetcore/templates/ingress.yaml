@@ -4,11 +4,17 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-ingress
   labels:
-    {{- include "aspnetcore.labels" . | nindent 4 }}
-  {{- with .Values.ingress.annotations }}
+    {{- include "aspnetcore.standardLabels" . | nindent 4 }}
+    {{- if .Values.commonLabels }}
+      {{- toYaml .Values.commonLabels | nindent 4 }}
+    {{- end }}
   annotations:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- with .Values.ingress.annotations }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
+    {{- with .Values.commonAnnotations }}
+      {{- toYaml . | nindent 4 }}
+    {{- end }}
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   {{- if .Values.ingress.tls.enabled }}
