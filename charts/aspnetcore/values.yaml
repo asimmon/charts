@@ -152,8 +152,10 @@ aadPodIdentityBinding:
   name: ""
   identityName: ""
 
-## Azure Workload Identity (https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview)
+## Azure Workload Identity (https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview#service-account-annotations)
 ## @param azureWorkloadIdentity.enabled Whether or not to add Azure Workload Identity labels
+## @param azureWorkloadIdentity.clientId The Azure AD application client ID to be used with the pod (you must also set serviceAccount.create to true)
 ##
 azureWorkloadIdentity:
   enabled: false
+  clientId: ""
