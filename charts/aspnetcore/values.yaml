@@ -143,11 +143,17 @@ serviceAccount:
   annotations: {}
 
 ## Azure AD Pod Identity binding (https://github.com/Azure/aad-pod-identity)
-## @param aadpodidentitybinding.create Whether or not to create an AAD pod identity binding associated to the deployment
-## @param aadpodidentitybinding.name Name of the AAD pod identity binding, automatically generated from the release name if not specified
-## @param aadpodidentitybinding.identityName Name of the AAD identity
+## @param aadPodIdentityBinding.create Whether or not to create an AAD pod identity binding associated to the deployment
+## @param aadPodIdentityBinding.name Name of the AAD pod identity binding, automatically generated from the release name if not specified
+## @param aadPodIdentityBinding.identityName Name of the AAD identity
 ##
-aadpodidentitybinding:
+aadPodIdentityBinding:
   create: false
   name: ""
   identityName: ""
+
+## Azure Workload Identity (https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview)
+## @param azureWorkloadIdentity.enabled Whether or not to add Azure Workload Identity labels
+##
+azureWorkloadIdentity:
+  enabled: false

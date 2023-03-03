@@ -23,8 +23,11 @@ spec:
         {{- if .Values.podLabels }}
           {{- toYaml .Values.podLabels | nindent 8 }}
         {{- end }}
-        {{- if .Values.aadpodidentitybinding.create }}
-        aadpodidbinding: {{ .Values.aadpodidentitybinding.identityName }}
+        {{- if .Values.aadPodIdentityBinding.create }}
+        aadpodidbinding: {{ .Values.aadPodIdentityBinding.identityName }}
+        {{- end }}
+        {{- if .Values.azureWorkloadIdentity.enabled }}
+        azure.workload.identity/use: "true"
         {{- end }}
       {{- with .Values.podAnnotations }}
       annotations:
