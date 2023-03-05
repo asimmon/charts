@@ -63,15 +63,36 @@ jobs:
       - name: Show Helm version
         run: helm version
 
-      - name: Create demo namespace
-        run: kubectl create namespace demo
+      - name: Generate test values
+        run: |
+          cat <<EOF > test-values.yaml
+          environment: Staging
+          readinessProbe:
+            httpGet:
+              path: "/"
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: "/"
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+          EOF
+
+      - name: Create test namespace
+        run: kubectl create namespace test
 
       - name: Template Helm chart
-        run: helm template aspnetcore ./charts/aspnetcore/ --namespace demo --debug
+        run: helm template aspnetcore ./charts/aspnetcore/ --namespace test --values test-values.yaml --debug
 
       - name: Install Helm chart
-        run: helm install aspnetcore ./charts/aspnetcore/ --namespace demo --debug --wait
+        run: helm install aspnetcore ./charts/aspnetcore/ --namespace test --values test-values.yaml --debug --wait
 
       - name: Show Kubernetes resources
-        run: kubectl get all --namespace demo
+        run: kubectl get all --namespace test
         if: always()
