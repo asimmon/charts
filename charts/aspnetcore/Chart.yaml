@@ -1,8 +1,8 @@
 apiVersion: v2
 name: aspnetcore
 description: A Helm chart for ASP.NET Core services
-version: 0.1.0
-home: https://github.com/gsoft-inc/charts
+version: 0.1.5
+home: https://github.com/asimmon/charts
 maintainers:
-  - name: GSoft Group Inc.
-    url: https://www.gsoft.com
+  - name: Anthony Simmon
+    url: https://anthonysimmon.com/
