@@ -1,7 +1,7 @@
 apiVersion: v2
 name: aspnetcore
 description: A Helm chart for ASP.NET Core services
-version: 0.1.8
+version: 0.1.9
 home: https://github.com/asimmon/charts
 maintainers:
   - name: Anthony Simmon
